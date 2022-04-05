@@ -4,7 +4,8 @@ import {
   SearchBox,
   NumberBox,
   DateRange,
-  RangeInput
+  RangeInput,
+  SelectedFilters
 } from "@appbaseio/reactivesearch";
 
 import './App.css'
@@ -122,6 +123,9 @@ class App extends Component {
                 iconPosition="left"
                 className="search"
               />
+            </div>
+            <div className="selected-container">
+              <SelectedFilters/>
             </div>
           </div>
           <div className="result-map-container">
