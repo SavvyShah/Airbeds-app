@@ -11,6 +11,24 @@ import './App.css'
 import { ReactiveGoogleMap } from "@appbaseio/reactivemaps";
 
 class App extends Component {
+  onPopoverClick = function(data) {
+    return (
+      <div className="popover">
+        <div className="image-container">
+          <img src={data.image} alt={data.name} height="185" width="263" />
+        </div>
+        <div className="extra-info-container">
+          <div className="type-container info">
+            {data.room_type}-{data.beds} bed
+          </div>
+          <div className="name-container info">{data.name}</div>
+          <div className="price-container info">
+            ${data.price} per night-Free cancellation
+          </div>
+        </div>
+      </div>
+    );
+  };
   render() {
     return (
       <div className="main-container">
@@ -30,6 +48,7 @@ class App extends Component {
               <div className="title">Airbeds</div>
             </nav>
           </div>
+          
           <div className="filters-search-container">
             <div className="filter-container">
               <div className="dropdown">
@@ -111,6 +130,7 @@ class App extends Component {
               dataField="location"
               defaultZoom={13}
               pagination
+              onPopoverClick={this.onPopoverClick}
               onPageChange={() => {
                 window.scrollTo(0, 0);
               }}
